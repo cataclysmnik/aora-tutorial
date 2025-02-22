@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Aurora",
-    "scheme": "aurora-tv",
-    "slug": "aurora-tv",
+    "name": "Aura",
+    "scheme": "aura",
+    "slug": "aura",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
