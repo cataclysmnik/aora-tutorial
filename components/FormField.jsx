@@ -1,52 +1,45 @@
-import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
-import { useState } from 'react'
-import React from 'react'
+import { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
-import { icons } from '../constants'
+import { icons } from "../constants";
 
-const FormField = ({ title, value, placeholder, handleChangeText, otherStyles, ...props}) => {
-    const [showPassword, setshowPassword] = useState(false)
+const FormField = ({
+  title,
+  value,
+  placeholder,
+  handleChangeText,
+  otherStyles,
+  ...props
+}) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <View className={`space-y-2 ${otherStyles}`} style={{ marginBottom: 8 }}>
-      <Text style={{
-        fontSize: 16, // text-base (Tailwind's base size is 16px)
-        color: '#F3F4F6', // text-gray-100 (Hex equivalent from Tailwind)
-        fontFamily: 'Poppins-Medium', // font-pmedium (Assuming you're using Poppins font)
-      }}>{title}</Text>
-      <View style={{
-        borderWidth: 2,
-        borderColor: '#262626',
-        width: '100%',
-        height: 64, // h-16 (16 * 4 = 64px)
-        paddingHorizontal: 16, // px-4 (4 * 4 = 16px)
-        backgroundColor: '#111', // Adjust based on `bg-black-100`
-        borderRadius: 16, // rounded-2xl (2xl = 16px)
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: "space-between",
-    }}>
+    <View className={`space-y-2 ${otherStyles}`}>
+      <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
+
+      <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center">
         <TextInput
-            style={{
-              flex: 1,
-              color: 'white',
-              fontSize: 16,
-              fontFamily: 'Poppins-SemiBold',
-            }}
-            value={value}
-            placeholder={placeholder}
-            placeholderTextColor="#7b7b8b"
-            onChangeText={handleChangeText}
-            secureTextEntry={title==='Password' && !showPassword}
+          className="flex-1 text-white font-psemibold text-base"
+          value={value}
+          placeholder={placeholder}
+          placeholderTextColor="#7B7B8B"
+          onChangeText={handleChangeText}
+          secureTextEntry={title === "Password" && !showPassword}
+          {...props}
         />
-        {title==='Password' && (
-            <TouchableOpacity onPress={() => setshowPassword(!showPassword)}>
-                <Image source={!showPassword ? icons.eye : icons.eyeHide} className="w-6 h-6" resizeMode='contain' />
-            </TouchableOpacity>
+
+        {title === "Password" && (
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <Image
+              source={!showPassword ? icons.eye : icons.eyeHide}
+              className="w-6 h-6"
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         )}
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default FormField
+export default FormField;
